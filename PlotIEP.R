@@ -37,6 +37,15 @@ ggplot() +
   theme_bw()+
   geom_sf(data = CDECshp, aes(color = as.factor(CHLORPH))) 
 
+#plot DJFMP trawls
+ednatrawls = filter(DJFMP_trawls, Location %in% c("Sherwood Harbor", "Mossdale", "Chipps Island"))
+ggplot() +
+  geom_sf(data = waterways, fill = "lightblue", color = "darkslategray4") +
+  geom_sf_label(data = ednatrawls, aes(label = Location), nudge_y = 0.05) +
+  geom_sf(data = ednatrawls)+
+  coord_sf(xlim = c(-122, -121.2), ylim = c(37.75, 38.6)) +
+  theme_bw() 
+
 #Example of how to plot x-y data
 
 #Data has a "latitude" and "longitude column. First
